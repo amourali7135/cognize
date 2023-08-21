@@ -6,7 +6,7 @@ class CreateTraveldestinations < ActiveRecord::Migration[7.0]
       t.text :obstacle
       t.string :current_status
       t.text :initiate
-      t.references :Travellist, null: false, foreign_key: true
+      t.references :travellist, null: false, foreign_key: true
 
       t.timestamps
     end

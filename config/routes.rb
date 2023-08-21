@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'present', to: 'pages#present', as: 'present' 
   get 'future', to: 'pages#future', as: 'future' 
 
+  #refactor for shallow nesting in each one!  , shallow: true
+
   namespace :past do
       resources :regretlist, except: [:index, :edit, :new, :destroy] do 
         resources :regret, except: [:index]
