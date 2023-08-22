@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   #refactor for shallow nesting in each one!  , shallow: true
 
   namespace :past do
-      resources :regretlist, except: [:index, :edit, :new, :destroy] do 
-        resources :regret, except: [:index]
+      resources :regretlist, except: [:index, :edit, :update, :destroy] do 
+        resources :regret#, except: [:index]
       end
   end
 
   namespace :present do
-    resources :badhabitlist, except: [:index, :edit, :new, :destroy] do 
+    resources :badhabitlist, except: [:index, :edit, :update, :destroy] do 
       resources :badhabit
     end
     resources :currentlegacy, except: [:index] do 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :future do
-    resources :futureregretlist, except: [:index, :edit, :new, :destroy] do 
+    resources :futureregretlist, except: [:index, :edit, :update, :destroy] do 
       resources :futureregret, except: [:index]
     end
     resources :dreamlegacy, except: [:index] do 

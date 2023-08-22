@@ -1,0 +1,2 @@
+class DreamlegacyController < ApplicationController
+end

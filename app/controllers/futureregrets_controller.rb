@@ -1,0 +1,2 @@
+class FutureregretsController < ApplicationController
+end

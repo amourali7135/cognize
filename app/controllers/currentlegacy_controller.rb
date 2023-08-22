@@ -1,0 +1,2 @@
+class CurrentlegacyController < ApplicationController
+end
