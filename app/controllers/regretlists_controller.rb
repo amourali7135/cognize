@@ -9,6 +9,7 @@ class RegretlistsController < ApplicationController
     if @regretlist.save
       redirect_to future_futureregretlist_path(@regretlist)
     else
+      flash[:error] = "There was an error, please try again"
       render :new, status: :unprocessable_entity
     end
   end

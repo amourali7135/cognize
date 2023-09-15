@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       resources :regretlist, except: [:index, :edit, :update, :destroy] do 
         resources :regret#, except: [:index]
       end
+      #Let's see how this goes...
+      resources :experiment
   end
 
   namespace :present do

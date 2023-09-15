@@ -7,7 +7,7 @@ class BadhabitlistsController < ApplicationController
     @badhabitlist = Badhabitlist.new(bad_habit_list_params)
     @badhabitlist.user_id = current_user.id # Necessary?
     if @badhabitlist.save
-      redirect_to future_futureregretlist_path(@badhabitlist)
+      redirect_to present_badhabitlist_path(@badhabitlist)
     else
       render :new, status: :unprocessable_entity
     end

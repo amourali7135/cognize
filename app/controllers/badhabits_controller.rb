@@ -1,5 +1,5 @@
 class BadhabitsController < ApplicationController
-  before_action :set_badhabitlist, only: %i[show edit update destroy new create inex] # is this table even needed
+  before_action :set_badhabitlist, only: %i[show edit update destroy new create index] # is this table even needed
 
   before_action :set_badhabit, only: %i[show edit update destroy new create index]
 

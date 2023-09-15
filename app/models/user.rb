@@ -18,4 +18,6 @@ class User < ApplicationRecord
 
   has_one :dreamlegacy, dependent: :destroy
   has_many :dreamlegacysteps, through: :dreamlegacy
+
+  has_many :experiments, dependent: :destroy
 end
