@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_27_080336) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_16_185018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -328,6 +328,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_080336) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_peoplemisseds_on_user_id"
+  end
+
+  create_table "pghero_query_stats", force: :cascade do |t|
+    t.text "database"
+    t.text "user"
+    t.text "query"
+    t.bigint "query_hash"
+    t.float "total_time"
+    t.bigint "calls"
+    t.datetime "captured_at", precision: nil
+    t.index ["database", "captured_at"], name: "index_pghero_query_stats_on_database_and_captured_at"
+  end
+
+  create_table "pghero_space_stats", force: :cascade do |t|
+    t.text "database"
+    t.text "schema"
+    t.text "relation"
+    t.bigint "size"
+    t.datetime "captured_at", precision: nil
+    t.index ["database", "captured_at"], name: "index_pghero_space_stats_on_database_and_captured_at"
   end
 
   create_table "polylistitems", force: :cascade do |t|

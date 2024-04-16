@@ -37,7 +37,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -47,6 +47,8 @@ gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+# For upgrading Rails versions later
+gem 'next_rails'
 
 gem "bootstrap", "~> 5.2"
 gem "devise"
@@ -56,8 +58,9 @@ gem "simple_form", github: "heartcombo/simple_form"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
+  gem "factory_bot", "~> 6.4"
 end
 
 group :development do
@@ -69,6 +72,22 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "bullet"
+  gem "better_errors" # Don't use with RSPEC.  Wait, why not?
+  gem "binding_of_caller"
+  gem 'active_record_doctor'
+  # Run via bundle exec rake active_record_doctor
+  gem 'rack-mini-profiler'
+  # For memory profiling
+  gem 'memory_profiler'
+  # For call-stack profiling flamegraphs
+  gem 'stackprof'
+  gem 'database_consistency', require: false
+  gem "strong_migrations"
+  gem "pghero" #Fix for production route protection!
+  gem "pg_query", ">= 2"
+  gem 'derailed_benchmarks' #Instructions online
+
 end
 
 group :test do
@@ -77,3 +96,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+

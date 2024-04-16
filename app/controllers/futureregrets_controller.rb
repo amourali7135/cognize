@@ -20,6 +20,7 @@ class FutureregretsController < ApplicationController
     @regret.regretlist = @regretlist
     if @regret.save
       redirect_to past_regretlist(@regretlist)
+      flash[:notice] = "Your regret was successfully created!"
     else
       render :new, status: :unprocessable_entity
     end

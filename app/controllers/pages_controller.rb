@@ -2,10 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+
   end
 
   # Are these three even necessary?  Ayo.  Experiment around.
-  def past
+  def past #merge regret shit together
     @regretlist = Regretlist.where(user_id: current_user.id)
     @regrets = Regret.where(regretlist_id: params[:regretlist_id])
     @experiment = Experiment.where(user_id: current_user.id)
