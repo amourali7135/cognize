@@ -55,12 +55,16 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
+gem "rails_admin", "3.0"
+gem 'faker'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails"
   gem "factory_bot", "~> 6.4"
+  gem 'rspec-rails', '~> 6.1.0'
 end
 
 group :development do
@@ -84,10 +88,9 @@ group :development do
   gem 'stackprof'
   gem 'database_consistency', require: false
   gem "strong_migrations"
-  gem "pghero" #Fix for production route protection!
+  gem "pghero" # Fix for production route protection!
   gem "pg_query", ">= 2"
-  gem 'derailed_benchmarks' #Instructions online
-
+  gem 'derailed_benchmarks' # Instructions online
 end
 
 group :test do
@@ -96,5 +99,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-
+gem "sassc-rails"
+gem "sassc-rails"
+gem "sassc-rails"
+gem "sassc-rails"
+gem "sassc-rails"

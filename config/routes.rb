@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => 'fuckyouhackers', as: 'rails_admin'
   devise_for :users
   root to: "pages#home"# unless current_user.signed_in?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   mount PgHero::Engine, at: "pghero"
+
   
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard' 
   get 'past', to: 'pages#past', as: 'past' 
