@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  mount PgHero::Engine, at: "pghero"
+  authenticate :user, -> (user) { user.admin? } do
+    mount PgHero::Engine, at: "pghero"
+  end
+  mount Debugbar::Engine => Debugbar.config.prefix
+
 
   
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard' 

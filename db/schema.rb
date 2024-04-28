@@ -10,9 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_16_185018) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "background_migration_jobs", force: :cascade do |t|
+    t.bigint "migration_id", null: false
+    t.bigint "min_value", null: false
+    t.bigint "max_value", null: false
+    t.integer "batch_size", null: false
+    t.integer "sub_batch_size", null: false
+    t.integer "pause_ms", null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.string "status", default: "enqueued", null: false
+    t.integer "max_attempts", null: false
+    t.integer "attempts", default: 0, null: false
+    t.string "error_class"
+    t.string "error_message"
+    t.string "backtrace", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["migration_id", "finished_at"], name: "index_background_migration_jobs_on_finished_at"
+    t.index ["migration_id", "max_value"], name: "index_background_migration_jobs_on_max_value"
+    t.index ["migration_id", "status", "updated_at"], name: "index_background_migration_jobs_on_updated_at"
+  end
+
+  create_table "background_migrations", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.string "migration_name", null: false
+    t.jsonb "arguments", default: [], null: false
+    t.string "batch_column_name", null: false
+    t.bigint "min_value", null: false
+    t.bigint "max_value", null: false
+    t.bigint "rows_count"
+    t.integer "batch_size", null: false
+    t.integer "sub_batch_size", null: false
+    t.integer "batch_pause", null: false
+    t.integer "sub_batch_pause_ms", null: false
+    t.integer "batch_max_attempts", null: false
+    t.string "status", default: "enqueued", null: false
+    t.string "shard"
+    t.boolean "composite", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["migration_name", "arguments", "shard"], name: "index_background_migrations_on_unique_configuration", unique: true
+  end
+
+  create_table "background_schema_migrations", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.string "migration_name", null: false
+    t.string "table_name", null: false
+    t.string "definition", null: false
+    t.string "status", default: "enqueued", null: false
+    t.string "shard"
+    t.boolean "composite", default: false, null: false
+    t.integer "statement_timeout"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.integer "max_attempts", null: false
+    t.integer "attempts", default: 0, null: false
+    t.string "error_class"
+    t.string "error_message"
+    t.string "backtrace", array: true
+    t.string "connection_class_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["migration_name", "shard"], name: "index_background_schema_migrations_on_unique_configuration", unique: true
+  end
 
   create_table "badhabitlists", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -513,6 +578,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_16_185018) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "background_migration_jobs", "background_migrations", column: "migration_id", on_delete: :cascade
+  add_foreign_key "background_migrations", "background_migrations", column: "parent_id", on_delete: :cascade
+  add_foreign_key "background_schema_migrations", "background_schema_migrations", column: "parent_id", on_delete: :cascade
   add_foreign_key "badhabitlists", "users"
   add_foreign_key "badhabits", "badhabitlists"
   add_foreign_key "bucketlistitems", "bucketlists"

@@ -58,7 +58,6 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "rails_admin", "3.0"
 gem 'faker'
 
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -88,9 +87,12 @@ group :development do
   gem 'stackprof'
   gem 'database_consistency', require: false
   gem "strong_migrations"
-  gem "pghero" # Fix for production route protection!
+  gem "pghero" 
   gem "pg_query", ">= 2"
-  gem 'derailed_benchmarks' # Instructions online
+  gem 'derailed_benchmarks'
+  gem 'debugbar'
+  # Instructions online
+  gem 'online_migrations'
 end
 
 group :test do
