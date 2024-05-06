@@ -12,6 +12,8 @@ module Cognize
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false
+      #Do I need this for user UUID?
+      # generate.orm :active_record, primary_key_type: :uuid
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

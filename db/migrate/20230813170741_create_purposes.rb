@@ -4,7 +4,7 @@ class CreatePurposes < ActiveRecord::Migration[7.0]
       t.text :description
       t.text :initiate
       t.text :obstacles
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

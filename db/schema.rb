@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_06_162232) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "background_migration_jobs", force: :cascade do |t|
@@ -80,7 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "badhabitlists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_badhabitlists_on_user_id"
@@ -114,14 +115,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "bucketlists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_bucketlists_on_user_id"
   end
 
   create_table "careergoallists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_careergoallists_on_user_id"
@@ -144,7 +145,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "memorialized"
     t.text "epitaph"
     t.text "remembered_for"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_currentlegacies_on_user_id"
@@ -164,7 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "memorialized"
     t.text "epitaph"
     t.text "remembered_for"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_dreamlegacies_on_user_id"
@@ -196,14 +197,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "dreamlifelists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_dreamlifelists_on_user_id"
   end
 
   create_table "dreamlists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_dreamlists_on_user_id"
@@ -228,7 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "obstacles"
     t.text "initiate"
     t.string "current_status"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_endgames_on_user_id"
@@ -241,14 +242,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "initiate"
     t.string "priority"
     t.string "current_status"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_experiments_on_user_id"
   end
 
   create_table "familygoallists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_familygoallists_on_user_id"
@@ -268,7 +269,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "financialgoallists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_financialgoallists_on_user_id"
@@ -293,14 +294,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "obstacle"
     t.text "initiate"
     t.text "priority"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_financialsituations_on_user_id"
   end
 
   create_table "futureregretlists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_futureregretlists_on_user_id"
@@ -330,14 +331,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "gratefullists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gratefullists_on_user_id"
   end
 
   create_table "healthgoallists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_healthgoallists_on_user_id"
@@ -356,8 +357,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.index ["healthgoallist_id"], name: "index_healthgoals_on_healthgoallist_id"
   end
 
+  create_table "hyptoheticals", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mistakelists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_mistakelists_on_user_id"
@@ -391,7 +398,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "peoplemisseds", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_peoplemisseds_on_user_id"
@@ -450,7 +457,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "publicgoallists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_publicgoallists_on_user_id"
@@ -473,14 +480,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
     t.text "description"
     t.text "initiate"
     t.text "obstacles"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_purposes_on_user_id"
   end
 
   create_table "regretlists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_regretlists_on_user_id"
@@ -503,7 +510,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
 
   create_table "relationshipissuelists", force: :cascade do |t|
     t.string "timing"
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_relationshipissuelists_on_user_id"
@@ -524,7 +531,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "traumalists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_traumalists_on_user_id"
@@ -559,13 +566,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_28_153901) do
   end
 
   create_table "travellists", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_travellists_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

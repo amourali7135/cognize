@@ -6,7 +6,7 @@ class CreateEndgames < ActiveRecord::Migration[7.0]
       t.text :obstacles
       t.text :initiate
       t.string :current_status
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

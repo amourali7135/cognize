@@ -4,7 +4,7 @@ class CreateCurrentlegacies < ActiveRecord::Migration[7.0]
       t.text :memorialized
       t.text :epitaph
       t.text :remembered_for
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, type: :uuid
 
       t.timestamps
     end

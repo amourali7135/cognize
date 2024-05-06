@@ -19,3 +19,9 @@ user =
   )
 user.save!
 puts 'Finished with the users!'
+ 
+puts "Experiment with UUIDs..."
+bucketlist = 
+ Bucketlist.new(
+  user_id: User.first.id
+ )

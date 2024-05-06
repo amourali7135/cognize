@@ -93,6 +93,10 @@ group :development do
   gem 'debugbar'
   # Instructions online
   gem 'online_migrations'
+
+  # gem "autotuner" Experiment later
+
+  
 end
 
 group :test do
@@ -101,8 +105,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-gem "sassc-rails"
-gem "sassc-rails"
-gem "sassc-rails"
-gem "sassc-rails"
-gem "sassc-rails"
+

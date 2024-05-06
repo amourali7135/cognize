@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => 'fuckyouhackers', as: 'rails_admin'
   devise_for :users
-  root to: "pages#home"# unless current_user.signed_in?
+  #Change for logged in vs not
+  root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   mount Debugbar::Engine => Debugbar.config.prefix
 
 
-  
+  # Make unique controllers later
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard' 
   get 'past', to: 'pages#past', as: 'past' 
   get 'present', to: 'pages#present', as: 'present' 
